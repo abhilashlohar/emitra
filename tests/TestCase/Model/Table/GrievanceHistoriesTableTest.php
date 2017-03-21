@@ -1,22 +1,22 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\ServicesTable;
+use App\Model\Table\GrievanceHistoriesTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\ServicesTable Test Case
+ * App\Model\Table\GrievanceHistoriesTable Test Case
  */
-class ServicesTableTest extends TestCase
+class GrievanceHistoriesTableTest extends TestCase
 {
 
     /**
      * Test subject
      *
-     * @var \App\Model\Table\ServicesTable
+     * @var \App\Model\Table\GrievanceHistoriesTable
      */
-    public $Services;
+    public $GrievanceHistories;
 
     /**
      * Fixtures
@@ -24,7 +24,7 @@ class ServicesTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.services'
+        'app.grievance_histories'
     ];
 
     /**
@@ -35,8 +35,8 @@ class ServicesTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('Services') ? [] : ['className' => 'App\Model\Table\ServicesTable'];
-        $this->Services = TableRegistry::get('Services', $config);
+        $config = TableRegistry::exists('GrievanceHistories') ? [] : ['className' => 'App\Model\Table\GrievanceHistoriesTable'];
+        $this->GrievanceHistories = TableRegistry::get('GrievanceHistories', $config);
     }
 
     /**
@@ -46,7 +46,7 @@ class ServicesTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->Services);
+        unset($this->GrievanceHistories);
 
         parent::tearDown();
     }

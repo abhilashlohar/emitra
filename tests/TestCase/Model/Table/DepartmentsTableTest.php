@@ -1,22 +1,22 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\ServicesTable;
+use App\Model\Table\DepartmentsTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\ServicesTable Test Case
+ * App\Model\Table\DepartmentsTable Test Case
  */
-class ServicesTableTest extends TestCase
+class DepartmentsTableTest extends TestCase
 {
 
     /**
      * Test subject
      *
-     * @var \App\Model\Table\ServicesTable
+     * @var \App\Model\Table\DepartmentsTable
      */
-    public $Services;
+    public $Departments;
 
     /**
      * Fixtures
@@ -24,7 +24,11 @@ class ServicesTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.services'
+        'app.departments',
+        'app.grievances',
+        'app.logins',
+        'app.notifications',
+        'app.sub_departments'
     ];
 
     /**
@@ -35,8 +39,8 @@ class ServicesTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('Services') ? [] : ['className' => 'App\Model\Table\ServicesTable'];
-        $this->Services = TableRegistry::get('Services', $config);
+        $config = TableRegistry::exists('Departments') ? [] : ['className' => 'App\Model\Table\DepartmentsTable'];
+        $this->Departments = TableRegistry::get('Departments', $config);
     }
 
     /**
@@ -46,7 +50,7 @@ class ServicesTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->Services);
+        unset($this->Departments);
 
         parent::tearDown();
     }

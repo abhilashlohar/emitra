@@ -7,19 +7,19 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Logins Model
+ * Trasanctions Model
  *
- * @property \Cake\ORM\Association\BelongsTo $Gcms
+ * @property \Cake\ORM\Association\BelongsTo $Users
  *
- * @method \App\Model\Entity\Login get($primaryKey, $options = [])
- * @method \App\Model\Entity\Login newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\Login[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Login|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Login patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Login[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\Login findOrCreate($search, callable $callback = null, $options = [])
+ * @method \App\Model\Entity\Trasanction get($primaryKey, $options = [])
+ * @method \App\Model\Entity\Trasanction newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\Trasanction[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\Trasanction|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Trasanction patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\Trasanction[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\Trasanction findOrCreate($search, callable $callback = null, $options = [])
  */
-class LoginsTable extends Table
+class TrasanctionsTable extends Table
 {
 
     /**
@@ -32,11 +32,11 @@ class LoginsTable extends Table
     {
         parent::initialize($config);
 
-        $this->table('logins');
-        $this->displayField('name');
+        $this->table('trasanctions');
+        $this->displayField('id');
         $this->primaryKey('id');
 
-       
+        
     }
 
     /**
@@ -52,16 +52,16 @@ class LoginsTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->requirePresence('name', 'create')
-            ->notEmpty('name');
+            ->requirePresence('prn', 'create')
+            ->notEmpty('prn');
 
         $validator
-            ->requirePresence('password', 'create')
-            ->notEmpty('password');
+            ->requirePresence('rpptxnid', 'create')
+            ->notEmpty('rpptxnid');
 
         $validator
-            ->requirePresence('mobile', 'create')
-            ->notEmpty('mobile');
+            ->requirePresence('responce', 'create')
+            ->notEmpty('responce');
 
         return $validator;
     }

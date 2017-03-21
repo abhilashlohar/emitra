@@ -138,8 +138,7 @@ class UsersController extends AppController
 
     public function home()
     {
-        
-       
-       
+        $Grievances=$this->Users->Grievances->find()->where(['user_id'=>$this->Auth->User('id')])->limit(10);
+		$this->set(compact('Grievances'));
     }
 }

@@ -33,6 +33,15 @@ class GrievancesTable extends Table
         $this->table('grievances');
         $this->displayField('id');
         $this->primaryKey('id');
+		
+		$this->belongsTo('Logins');
+		$this->belongsTo('Notifications');
+		$this->belongsTo('Departments');
+		$this->belongsTo('Levels');
+		$this->belongsTo('Users');
+		$this->belongsTo('GrievanceHistories');
+		$this->belongsTo('GrievanceAttachments');
+		$this->belongsTo('Trasanctions');
     }
 
     /**

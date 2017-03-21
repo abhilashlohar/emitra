@@ -1,22 +1,22 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\ServicesTable;
+use App\Model\Table\LevelsTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\ServicesTable Test Case
+ * App\Model\Table\LevelsTable Test Case
  */
-class ServicesTableTest extends TestCase
+class LevelsTableTest extends TestCase
 {
 
     /**
      * Test subject
      *
-     * @var \App\Model\Table\ServicesTable
+     * @var \App\Model\Table\LevelsTable
      */
-    public $Services;
+    public $Levels;
 
     /**
      * Fixtures
@@ -24,7 +24,9 @@ class ServicesTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.services'
+        'app.levels',
+        'app.departments',
+        'app.users'
     ];
 
     /**
@@ -35,8 +37,8 @@ class ServicesTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('Services') ? [] : ['className' => 'App\Model\Table\ServicesTable'];
-        $this->Services = TableRegistry::get('Services', $config);
+        $config = TableRegistry::exists('Levels') ? [] : ['className' => 'App\Model\Table\LevelsTable'];
+        $this->Levels = TableRegistry::get('Levels', $config);
     }
 
     /**
@@ -46,7 +48,7 @@ class ServicesTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->Services);
+        unset($this->Levels);
 
         parent::tearDown();
     }
@@ -67,6 +69,16 @@ class ServicesTableTest extends TestCase
      * @return void
      */
     public function testValidationDefault()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test buildRules method
+     *
+     * @return void
+     */
+    public function testBuildRules()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

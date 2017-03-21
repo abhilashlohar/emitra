@@ -33,6 +33,8 @@ class UsersTable extends Table
         $this->table('users');
         $this->displayField('name');
         $this->primaryKey('id');
+		
+		$this->belongsTo('Grievances');
     }
 
     /**

@@ -7,19 +7,19 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Logins Model
+ * Notifications Model
  *
- * @property \Cake\ORM\Association\BelongsTo $Gcms
+ * @property \Cake\ORM\Association\BelongsTo $Users
  *
- * @method \App\Model\Entity\Login get($primaryKey, $options = [])
- * @method \App\Model\Entity\Login newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\Login[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Login|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Login patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Login[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\Login findOrCreate($search, callable $callback = null, $options = [])
+ * @method \App\Model\Entity\Notification get($primaryKey, $options = [])
+ * @method \App\Model\Entity\Notification newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\Notification[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\Notification|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Notification patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\Notification[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\Notification findOrCreate($search, callable $callback = null, $options = [])
  */
-class LoginsTable extends Table
+class NotificationsTable extends Table
 {
 
     /**
@@ -32,11 +32,11 @@ class LoginsTable extends Table
     {
         parent::initialize($config);
 
-        $this->table('logins');
-        $this->displayField('name');
+        $this->table('notifications');
+        $this->displayField('id');
         $this->primaryKey('id');
 
-       
+        
     }
 
     /**
@@ -52,16 +52,16 @@ class LoginsTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->requirePresence('name', 'create')
-            ->notEmpty('name');
+            ->requirePresence('message', 'create')
+            ->notEmpty('message');
 
         $validator
-            ->requirePresence('password', 'create')
-            ->notEmpty('password');
+            ->requirePresence('button_text', 'create')
+            ->notEmpty('button_text');
 
         $validator
-            ->requirePresence('mobile', 'create')
-            ->notEmpty('mobile');
+            ->requirePresence('link', 'create')
+            ->notEmpty('link');
 
         return $validator;
     }

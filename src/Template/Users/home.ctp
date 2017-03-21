@@ -53,3 +53,48 @@
 	  <!-- /.info-box -->
 	</div>
 </div>
+
+
+<div class="row">
+	<div class="col-md-8">
+		<div class="box box-warning">
+			<div class="box-header with-border">
+			  <h3 class="box-title">Recent Grievances</h3>
+
+			  <div class="box-tools pull-right">
+				<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+				</button>
+			  </div>
+			  <!-- /.box-tools -->
+			</div>
+			<!-- /.box-header -->
+			<div class="box-body">
+			<table class="table ">
+				<tbody>
+					<tr>
+					  <th>Sr. No.</th>
+					  <th>Subject</th>
+					  <th>Cteated On</th>
+					</tr>
+					<?php $i=0; foreach($Grievances as $Grievance){ $i++; ?>
+					<tr>
+					  <td><?= h($i) ?></td>
+					  <td><?= h($Grievance->subject) ?></td>
+					  <td><?= h($Grievance->created_on) ?></td>
+					</tr>
+					<?php } ?>
+					<tr>
+					  <td colspan="3" align="right">
+					  <?= $this->Html->link(__('See all grievances'), ['controller'=>'grievances','action' => 'index']) ?>
+					  </td>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+			<!-- /.box-body -->
+		</div>
+	</div>
+	<div class="col-md-4">
+	<?= $this->Html->link(__('Add new service'), ['controller'=>'services','action' => 'add']) ?>
+	</div>
+</div>

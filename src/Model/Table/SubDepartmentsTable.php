@@ -7,19 +7,20 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Logins Model
+ * SubDepartments Model
  *
- * @property \Cake\ORM\Association\BelongsTo $Gcms
+ * @property \Cake\ORM\Association\BelongsTo $Departments
+ * @property \Cake\ORM\Association\HasMany $Grievances
  *
- * @method \App\Model\Entity\Login get($primaryKey, $options = [])
- * @method \App\Model\Entity\Login newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\Login[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Login|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Login patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Login[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\Login findOrCreate($search, callable $callback = null, $options = [])
+ * @method \App\Model\Entity\SubDepartment get($primaryKey, $options = [])
+ * @method \App\Model\Entity\SubDepartment newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\SubDepartment[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\SubDepartment|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\SubDepartment patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\SubDepartment[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\SubDepartment findOrCreate($search, callable $callback = null, $options = [])
  */
-class LoginsTable extends Table
+class SubDepartmentsTable extends Table
 {
 
     /**
@@ -32,11 +33,15 @@ class LoginsTable extends Table
     {
         parent::initialize($config);
 
-        $this->table('logins');
+        $this->table('sub_departments');
         $this->displayField('name');
         $this->primaryKey('id');
 
-       
+        $this->belongsTo('Departments', [
+            'foreignKey' => 'department_id',
+            'joinType' => 'INNER'
+        ]);
+        
     }
 
     /**
@@ -55,14 +60,6 @@ class LoginsTable extends Table
             ->requirePresence('name', 'create')
             ->notEmpty('name');
 
-        $validator
-            ->requirePresence('password', 'create')
-            ->notEmpty('password');
-
-        $validator
-            ->requirePresence('mobile', 'create')
-            ->notEmpty('mobile');
-
         return $validator;
     }
 
@@ -75,6 +72,7 @@ class LoginsTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
+        $rules->add($rules->existsIn(['department_id'], 'Departments'));
 
         return $rules;
     }

@@ -49,7 +49,7 @@
             <?php }else{ ?>
                 <li><?php echo $this->Html->link('<i class="fa fa-fw fa-key"></i> Login','/Users/Login',array('escape'=>false)); ?></li>
             <?php } ?>
-            
+			
           </ul>
         </div>
         <!-- /.navbar-custom-menu -->

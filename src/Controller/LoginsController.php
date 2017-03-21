@@ -16,6 +16,7 @@ class LoginsController extends AppController
 		
 		$this->Auth->allow('login');
 		$this->Auth->allow('updateGcm');
+		$this->Auth->allow('signup');
 	}
 
     /**
@@ -123,10 +124,10 @@ class LoginsController extends AppController
 	
 	public function login(){
 		if ($this->request->is('post')) {
-            $username=$this->request->data['username'];
+            $mobile=$this->request->data['mobile'];
 			$password=$this->request->data['password'];
 			$gcm_id=$this->request->data['gcm_id'];
-			$Login=$this->Logins->find()->where(['username'=>$username,'password'=>$password])->first();
+			$Login=$this->Logins->find()->where(['mobile'=>$mobile,'password'=>$password])->first();
 			if($Login){
 				$result=['login_status'=>true,'user_data'=>$Login];
 				$Login = $this->Logins->get($Login->id);
@@ -139,6 +140,37 @@ class LoginsController extends AppController
 			//$result=['username'=>$username,'password'=>$password];
 			$this->set(array(
 				'result' => $result,
+				'_serialize' => array('result')
+			));
+        }
+	}
+	
+	public function signup(){
+		if ($this->request->is('post')) {
+            $name=$this->request->data['name'];
+			$gcm_id=$this->request->data['gcm_id'];
+			$password=$this->request->data['password'];
+			$mobile=$this->request->data['mobile'];
+			$email=$this->request->data['email'];
+			$address=$this->request->data['address'];
+			
+			$Login = $this->Logins->newEntity();
+
+			$Login->name = $name;
+			$Login->gcm = $gcm_id;
+			$Login->password = $password;
+			$Login->mobile = $mobile;
+			$Login->email = $email;
+			$Login->address = $address;
+
+			if($this->Logins->save($Login)){
+				$response=['status'=>true,'user_id'=>$Login->id];
+			}else{
+				$response=['status'=>false];
+			}
+			
+			$this->set(array(
+				'result' => $response,
 				'_serialize' => array('result')
 			));
         }
